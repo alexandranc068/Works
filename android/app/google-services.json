@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "828320750359",
+    "project_id": "tfg-alexandra2",
+    "storage_bucket": "tfg-alexandra2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828320750359:android:fec01944bd99662b34b552",
+        "android_client_info": {
+          "package_name": "com.example.tfg_alexandra"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0Nt2r6bB8wXL_l-Iv9NJk-mCD6PvoyJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

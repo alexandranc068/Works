@@ -1,0 +1,45 @@
+name: tfg_alexandra
+description: "Proyecto de inmersión cultural japonesa con IA"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  firebase_core: ^3.6.0
+  firebase_ai: ^2.1.0        
+  cloud_firestore: ^5.4.4
+  intl: ^0.20.2
+  cached_network_image: ^3.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: "^0.13.1"
+
+# ─── CONFIGURACIÓN DEL ICONO ──────────────────────────────────────────────────
+# Asegúrate de que la imagen esté en assets/imagenes/icono_app.png
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/imagenes/app_icono.png"
+  adaptive_icon_background: "#C0392B" # El rojo torii de tu interfaz
+  adaptive_icon_foreground: "assets/imagenes/app_icono.png"
+# ─────────────────────────────────────────────────────────────────────────────
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/imagenes/
+
+  fonts:
+    - family: MiFuenteJaponesa
+      fonts:
+        - asset: assets/fonts/NotoSansJP-VariableFont_wght.ttf
