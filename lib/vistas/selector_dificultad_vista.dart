@@ -10,6 +10,11 @@ class SelectorDificultadVista extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
+
     return Scaffold(
       body: Stack(
         children: [
@@ -61,7 +66,7 @@ class SelectorDificultadVista extends StatelessWidget {
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-                const SizedBox(height: 40),
+               SizedBox(height: 40 * escala),
                 _botonDificultad(context, "FÁCIL", "2 opciones de respuesta", Colors.greenAccent, () => _irAlSiguientePaso(context, "facil")),
                 _botonDificultad(context, "MEDIO", "4 opciones de respuesta", Colors.orangeAccent, () => _irAlSiguientePaso(context, "medio")),
                 _botonDificultad(context, "MODO PRO", "Escribe tu respuesta (IA)", Colors.redAccent, () => _irAlSiguientePaso(context, "pro"), esPro: true),

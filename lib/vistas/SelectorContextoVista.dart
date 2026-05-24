@@ -95,6 +95,11 @@ class _SelectorContextoVistaState extends State<SelectorContextoVista> {
 
   @override
   Widget build(BuildContext context) {
+     final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
+
     final int puntosTotales = widget.controlador.jugadorActual?.puntosCultura ?? 0;
     final String rango = widget.controlador.obtenerRangoActual();
 
@@ -135,7 +140,7 @@ class _SelectorContextoVistaState extends State<SelectorContextoVista> {
                     style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 16),
+                 SizedBox(height: 16),
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -192,12 +197,12 @@ class _SelectorContextoVistaState extends State<SelectorContextoVista> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
+                 SizedBox(height: 20 * escala),
                   _tarjetaContexto(context, "Módulo Espiritual", Icons.temple_hindu, "templos", Colors.orangeAccent),
                   _tarjetaContexto(context, "Restaurante y Comida", Icons.restaurant, "restaurante", Colors.greenAccent),
                   _tarjetaContexto(context, "Vida Social y Amistad", Icons.people, "amistad", Colors.blueAccent),
                   _tarjetaContexto(context, "Protocolo Laboral", Icons.business, "trabajo", Colors.blueGrey),
-                  const SizedBox(height: 30),
+                 SizedBox(height: 30 * escala),
                   TextButton.icon(
                     onPressed: () => _confirmarReinicio(context),
                     icon: const Icon(Icons.restart_alt, color: Colors.white54, size: 18),
@@ -216,6 +221,11 @@ class _SelectorContextoVistaState extends State<SelectorContextoVista> {
   }
 
   Widget _tarjetaContexto(BuildContext context, String titulo, IconData icono, String key, Color color) {
+    final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
+
     int puntos = widget.controlador.jugadorActual?.progresoContextos[key] ?? 0;
     double progreso = (puntos / 500).clamp(0.0, 1.0);
 
@@ -233,7 +243,7 @@ class _SelectorContextoVistaState extends State<SelectorContextoVista> {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 5),
+           SizedBox(height: 5 * escala),
             LinearProgressIndicator(
               value: progreso,
               color: color,

@@ -33,6 +33,12 @@ class _ContenedorPrincipalState extends State<ContenedorPrincipal> {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
+
     return Scaffold(
       body: IndexedStack(
         index: _indiceActual,

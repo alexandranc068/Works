@@ -159,6 +159,10 @@ class _PantallaTutorialVistaState extends State<PantallaTutorialVista>
 
   @override
   Widget build(BuildContext context) {
+    final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     final paso = _pasos[_pasoActual];
     final size = MediaQuery.of(context).size;
     final esPrimero = _pasoActual == 0;
@@ -207,7 +211,7 @@ class _PantallaTutorialVistaState extends State<PantallaTutorialVista>
           SafeArea(
             child: Column(
               children: [
-                const SizedBox(height: 24),
+               SizedBox(height: 24 * escala),
 
                 // ── Indicadores de paso ───────────────────────────────
                 Row(
@@ -229,7 +233,7 @@ class _PantallaTutorialVistaState extends State<PantallaTutorialVista>
                   ),
                 ),
 
-                const SizedBox(height: 32),
+               SizedBox(height: 32 * escala),  
 
                 // ── Personaje irasutoya ───────────────────────────────
                 SlideTransition(
@@ -272,7 +276,7 @@ class _PantallaTutorialVistaState extends State<PantallaTutorialVista>
                   ),
                 ),
 
-                const SizedBox(height: 8),
+               SizedBox(height: 8 * escala),
 
                 // ── Burbuja de diálogo ────────────────────────────────
                 Expanded(
@@ -317,14 +321,14 @@ class _PantallaTutorialVistaState extends State<PantallaTutorialVista>
                                   ],
                                 ),
                               ),
-                              const SizedBox(height: 16),
+                             SizedBox(height: 16 * escala),
                             ] else ...[
                               // Emoji para la bienvenida
                               Text(
                                 paso.emoji,
                                 style: const TextStyle(fontSize: 36),
                               ),
-                              const SizedBox(height: 12),
+                             SizedBox(height: 12  * escala),
                             ],
 
                             // Título
@@ -340,7 +344,7 @@ class _PantallaTutorialVistaState extends State<PantallaTutorialVista>
                               ),
                             ),
 
-                            const SizedBox(height: 16),
+                           SizedBox(height: 16 * escala),
 
                             // Descripción en burbuja
                             Container(
@@ -410,7 +414,7 @@ class _PantallaTutorialVistaState extends State<PantallaTutorialVista>
                                 letterSpacing: 1,
                               ),
                             ),
-                            const SizedBox(width: 8),
+                             SizedBox(width: 8  * escala),
                             Icon(
                               esUltimo
                                   ? Icons.auto_awesome_rounded

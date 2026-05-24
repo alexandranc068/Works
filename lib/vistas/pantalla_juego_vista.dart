@@ -115,6 +115,7 @@ class _PantallaJuegoVistaState extends State<PantallaJuegoVista>
     ));
   }
 
+
   void _mostrarCambioPuntos(int diferencia) {
     if (diferencia == 0) return;
     _mostrarSnack(

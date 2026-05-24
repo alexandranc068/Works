@@ -65,7 +65,7 @@ class _PantallaPerfilVistaState extends State<PantallaPerfilVista> {
                 letterSpacing: 1.2,
               ),
             ),
-            const SizedBox(height: 20),
+           SizedBox(height: 20),
             Flexible(
               child: GridView.builder(
                 shrinkWrap: true,
@@ -105,7 +105,7 @@ class _PantallaPerfilVistaState extends State<PantallaPerfilVista> {
                 },
               ),
             ),
-            const SizedBox(height: 20),
+           SizedBox(height: 20),
           ],
         ),
       ),
@@ -187,6 +187,11 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
   // ══════════════════════════════════════════════════════
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     final usuario  = widget.controlador.jugadorActual;
     final rango    = widget.controlador.obtenerRangoActual();
 
@@ -278,11 +283,11 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                   ],
                 ),
               ),
-              const SizedBox(height: 12),
+             SizedBox(height: 12 * escala),
               Text(usuario?.nombre ?? "Usuario",
                   style: const TextStyle(fontSize: 24, color: Colors.white,
                       fontWeight: FontWeight.w700, letterSpacing: 1)),
-              const SizedBox(height: 6),
+             SizedBox(height: 6 * escala),
               Container(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 16, vertical: 5),
@@ -318,7 +323,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                     valor: "${(porcentajeAcierto * 100).toInt()}%",
                     color: const Color(0xFF27ae60)),
               ]),
-              const SizedBox(height: 12),
+             SizedBox(height: 12  * escala),
               Row(children: [
                 _TarjetaStat(titulo: "📝 Respuestas",
                     valor: "$totalRespuestas",
@@ -329,7 +334,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                     color: const Color(0xFFF4A7B9)),
               ]),
 
-              const SizedBox(height: 24),
+             SizedBox(height: 24 * escala),
 
               Container(
                 padding: const EdgeInsets.all(18),
@@ -356,7 +361,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                               color: Color(0xFFC9A96E), fontSize: 14)),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                 SizedBox(height: 10 * escala),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: LinearProgressIndicator(
@@ -370,7 +375,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                           const Color(0xFFC9A96E).withOpacity(0.12),
                     ),
                   ),
-                  const SizedBox(height: 6),
+                 SizedBox(height: 6   * escala),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -385,7 +390,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                 ]),
               ),
 
-              const SizedBox(height: 24),
+             SizedBox(height: 24 * escala),
 
               Row(children: [
                 Container(width: 4, height: 18,
@@ -397,7 +402,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,
                         color: Color(0xFF3d2b1f))),
               ]),
-              const SizedBox(height: 14),
+             SizedBox(height: 14 * escala),
 
               ...contextoInfo.entries.map((entry) {
                 final key     = entry.key;
@@ -446,7 +451,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                                 fontWeight: FontWeight.w700)),
                           ],
                         ),
-                        const SizedBox(height: 6),
+                       SizedBox(height: 6 * escala),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: LinearProgressIndicator(
@@ -455,7 +460,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                             backgroundColor: color.withOpacity(0.12),
                           ),
                         ),
-                        const SizedBox(height: 4),
+                       SizedBox(height: 4 * escala),
                         Text("$pts / 500 pts",
                             style: const TextStyle(fontSize: 11,
                                 color: Color(0xFF9e8b7a))),
@@ -465,7 +470,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                 );
               }),
 
-              const SizedBox(height: 24),
+             SizedBox(height: 24 * escala),
 
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 _lineaDorada(),
@@ -478,7 +483,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                 _lineaDorada(),
               ]),
 
-              const SizedBox(height: 24),
+             SizedBox(height: 24 * escala),
 
               Container(
                 width: double.infinity,
@@ -519,20 +524,20 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                                 fontWeight: FontWeight.bold, letterSpacing: 2)),
                           ),
                         ),
-                        const SizedBox(width: 16),
-                        const Column(
+                         SizedBox(width: 16 * escala),
+                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Consultar a Sato-san",
                                 style: TextStyle(fontSize: 16, color: Colors.white,
                                     fontWeight: FontWeight.w700, letterSpacing: 0.5)),
-                            SizedBox(height: 2),
+                            SizedBox(height: 2 * escala),
                             Text("¿Estoy listo para Japón?",
                                 style: TextStyle(fontSize: 12,
                                     color: Color(0xFFC9A96E))),
                           ],
                         ),
-                        const SizedBox(width: 10),
+                         SizedBox(width: 10 * escala),
                         Icon(Icons.chevron_right,
                             color: const Color(0xFFC9A96E).withOpacity(0.7),
                             size: 28),
@@ -542,7 +547,7 @@ Importante: sé específico con los números reales. No inventes datos. El tono 
                 ),
               ),
 
-              const SizedBox(height: 32),
+             SizedBox(height: 32 * escala),
             ]),
           ),
         ]),
@@ -571,6 +576,10 @@ class _TarjetaStat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Expanded(
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -584,7 +593,7 @@ class _TarjetaStat extends StatelessWidget {
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(titulo, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
-          const SizedBox(height: 6),
+         SizedBox(height: 6 * escala),
           Text(valor, style: TextStyle(fontSize: 22,
               fontWeight: FontWeight.w700, color: color)),
         ]),
@@ -598,6 +607,10 @@ class _DialogoCargando extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       backgroundColor: const Color(0xFFFDFAF5),
@@ -621,14 +634,14 @@ class _DialogoCargando extends StatelessWidget {
                 color: Colors.white, fontSize: 22,
                 fontWeight: FontWeight.bold, letterSpacing: 2))),
           ),
-          const SizedBox(height: 20),
+         SizedBox(height: 20 * escala),
           const Text("Sato-san está meditando...",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,
                   color: Color(0xFF3d2b1f))),
-          const SizedBox(height: 6),
+         SizedBox(height: 6 * escala),
           Text("Analizando tu progreso cultural",
               style: TextStyle(fontSize: 13, color: Colors.grey[600])),
-          const SizedBox(height: 24),
+         SizedBox(height: 24 * escala),
           const CircularProgressIndicator(
               color: Color(0xFFC9A96E), strokeWidth: 2),
         ]),
@@ -669,6 +682,10 @@ class _DialogoDiagnostico extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       backgroundColor: const Color(0xFFFDFAF5),
@@ -697,7 +714,7 @@ class _DialogoDiagnostico extends StatelessWidget {
                   color: Colors.white, fontSize: 22,
                   fontWeight: FontWeight.bold, letterSpacing: 2))),
             ),
-            const SizedBox(height: 10),
+           SizedBox(height: 10* escala),
             const Text("Sato-san", style: TextStyle(
                 color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700)),
             Text("Diagnóstico Cultural",
@@ -731,11 +748,11 @@ class _DialogoDiagnostico extends StatelessWidget {
                   ]),
                 ]),
               ),
-              const SizedBox(height: 16),
+             SizedBox(height: 16 * escala),
               Text("Evaluación de Sato-san",
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600,
                       color: Colors.grey[600], letterSpacing: 0.5)),
-              const SizedBox(height: 8),
+             SizedBox(height: 8 * escala),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
@@ -749,7 +766,7 @@ class _DialogoDiagnostico extends StatelessWidget {
                     style: const TextStyle(fontSize: 14, height: 1.65,
                         color: Color(0xFF3d2b1f))),
               ),
-              const SizedBox(height: 16),
+             SizedBox(height: 16  * escala),
               Row(children: [
                 _chipStat("🏆 $puntos pts", const Color(0xFFC9A96E)),
                 const SizedBox(width: 8),
@@ -757,7 +774,7 @@ class _DialogoDiagnostico extends StatelessWidget {
                 const SizedBox(width: 8),
                 _chipStat("🎯 ${(pctAcierto * 100).toInt()}%", const Color(0xFF27ae60)),
               ]),
-              const SizedBox(height: 20),
+             SizedBox(height: 20 * escala),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

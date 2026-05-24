@@ -95,6 +95,11 @@ class _MenuPrincipalVistaState extends State<MenuPrincipalVista>
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+   final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -138,12 +143,12 @@ class _MenuPrincipalVistaState extends State<MenuPrincipalVista>
                     padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: Column(
                       children: [
-                        const SizedBox(height: 48),
+                         SizedBox(height: 48 * escala),
 
                         // ── Sello hanko ──────────────────────────────
                         _SelloHanko(),
 
-                        const SizedBox(height: 28),
+                         SizedBox(height: 28 * escala),
 
                         // ── Kanji decorativo ─────────────────────────
                         ShaderMask(
@@ -164,9 +169,9 @@ class _MenuPrincipalVistaState extends State<MenuPrincipalVista>
                           ),
                         ),
 
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10* escala),
                         _LineaDorada(),
-                        const SizedBox(height: 16),
+                        SizedBox(height: 16* escala),
 
                         // ── Título ───────────────────────────────────
                         ShaderMask(
@@ -189,7 +194,7 @@ class _MenuPrincipalVistaState extends State<MenuPrincipalVista>
                           ),
                         ),
 
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10* escala),
 
                         // ── Subtítulo japonés ─────────────────────────
                         Container(
@@ -215,12 +220,12 @@ class _MenuPrincipalVistaState extends State<MenuPrincipalVista>
                           ),
                         ),
 
-                        const SizedBox(height: 52),
+                        SizedBox(height: 52* escala),
 
                         // ── Campo de nombre ───────────────────────────
                         _CampoNombre(controller: _nombreController),
 
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8* escala),
 
                         // Hint sobre nombres japoneses
                         Text(
@@ -232,7 +237,7 @@ class _MenuPrincipalVistaState extends State<MenuPrincipalVista>
                           ),
                         ),
 
-                        const SizedBox(height: 36),
+                        SizedBox(height: 36* escala),
 
                         // ── Botones o loader ──────────────────────────
                         if (_estaCargando)
@@ -284,7 +289,7 @@ class _MenuPrincipalVistaState extends State<MenuPrincipalVista>
                             },
                           ),
 
-                          const SizedBox(height: 14),
+                          SizedBox(height: 14* escala),
 
                           _BotonJapones(
                             texto: "NUEVO ESTUDIANTE",
@@ -335,7 +340,7 @@ class _MenuPrincipalVistaState extends State<MenuPrincipalVista>
 
                         ],
 
-                        const SizedBox(height: 40),
+                        SizedBox(height: 40* escala),
                       ],
                     ),
                   ),

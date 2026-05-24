@@ -669,6 +669,11 @@ class _TarjetaPildora extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Container(
       margin: const EdgeInsets.only(bottom: 14),
       decoration: BoxDecoration(
@@ -697,7 +702,7 @@ class _TarjetaPildora extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12 * escala),
             Text(
               pildora.contenido,
               style: const TextStyle(
@@ -707,7 +712,7 @@ class _TarjetaPildora extends StatelessWidget {
               ),
             ),
             if (pildora.sabiasQue.isNotEmpty) ...[
-              const SizedBox(height: 12),
+              SizedBox(height: 12 * escala),
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -749,6 +754,11 @@ class _TarjetaNoticia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Container(
       margin: const EdgeInsets.only(bottom: 14),
       decoration: BoxDecoration(
@@ -786,7 +796,7 @@ class _TarjetaNoticia extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10 * escala),
             Text(
               noticia.titular,
               style: const TextStyle(
@@ -796,7 +806,7 @@ class _TarjetaNoticia extends StatelessWidget {
                 height: 1.3,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10 * escala),
             Text(
               noticia.resumen,
               style: const TextStyle(
@@ -806,7 +816,7 @@ class _TarjetaNoticia extends StatelessWidget {
               ),
             ),
             if (noticia.contexto.isNotEmpty) ...[
-              const SizedBox(height: 10),
+              SizedBox(height: 10 * escala),
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -866,6 +876,11 @@ class _TarjetaCuriosidadState extends State<_TarjetaCuriosidad> {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     final c = widget.curiosidad;
     return GestureDetector(
       onTap: () => setState(() => _expandida = !_expandida),
@@ -903,7 +918,7 @@ class _TarjetaCuriosidadState extends State<_TarjetaCuriosidad> {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        const SizedBox(height: 2),
+                        SizedBox(height: 2 * escala),
                         Text(
                           "${c.terminoJapones}  ·  ${c.pronunciacion}",
                           style: const TextStyle(
@@ -932,7 +947,7 @@ class _TarjetaCuriosidadState extends State<_TarjetaCuriosidad> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      SizedBox(height: 4 * escala),
                       Icon(
                         _expandida
                             ? Icons.keyboard_arrow_up_rounded
@@ -945,9 +960,9 @@ class _TarjetaCuriosidadState extends State<_TarjetaCuriosidad> {
                 ],
               ),
               if (_expandida) ...[
-                const SizedBox(height: 14),
+                SizedBox(height: 14 * escala),
                 const Divider(color: Color(0xFF2A2A2A)),
-                const SizedBox(height: 10),
+                SizedBox(height: 10  * escala),
                 Text(
                   c.explicacion,
                   style: const TextStyle(
@@ -957,7 +972,7 @@ class _TarjetaCuriosidadState extends State<_TarjetaCuriosidad> {
                   ),
                 ),
                 if (c.ejemplo != null) ...[
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12 * escala),
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(14),
@@ -978,7 +993,7 @@ class _TarjetaCuriosidadState extends State<_TarjetaCuriosidad> {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8 * escala),
                         Text(
                           c.ejemplo!['japones'] ?? '',
                           style: const TextStyle(
@@ -995,7 +1010,7 @@ class _TarjetaCuriosidadState extends State<_TarjetaCuriosidad> {
                             fontStyle: FontStyle.italic,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: 4 * escala),
                         Text(
                           c.ejemplo!['español'] ?? '',
                           style: const TextStyle(
@@ -1027,6 +1042,11 @@ class _LoadingJapones extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -1039,7 +1059,7 @@ class _LoadingJapones extends StatelessWidget {
               strokeWidth: 2,
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16 * escala),
           Text(
             mensaje,
             style: const TextStyle(
@@ -1060,6 +1080,11 @@ class _ErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32),
@@ -1067,13 +1092,13 @@ class _ErrorWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text("⚠️", style: TextStyle(fontSize: 40)),
-            const SizedBox(height: 16),
+            SizedBox(height: 16 * escala),
             Text(
               mensaje,
               textAlign: TextAlign.center,
               style: const TextStyle(color: Color(0xFF888888), fontSize: 14),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20 * escala),
             ElevatedButton(
               onPressed: onReintentar,
               style: ElevatedButton.styleFrom(

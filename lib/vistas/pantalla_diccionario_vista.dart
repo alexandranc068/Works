@@ -7,6 +7,12 @@ class PantallaDiccionarioVista extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
+
     return Scaffold(
       backgroundColor: const Color(0xFF0D0D0D),
       body: Stack(
@@ -97,7 +103,7 @@ class PantallaDiccionarioVista extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 8),
+                SizedBox(height: 8 * escala),
 
                 // ── Línea dorada ─────────────────────────────────────────
                 Padding(
@@ -117,7 +123,7 @@ class PantallaDiccionarioVista extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                SizedBox(height: 16 * escala),
 
                 // ── Lista ─────────────────────────────────────────────────
                 Expanded(
@@ -160,7 +166,7 @@ class PantallaDiccionarioVista extends StatelessWidget {
                                     fontWeight: FontWeight.w900,
                                   ),
                                 ),
-                                const SizedBox(height: 12),
+                                SizedBox(height: 12 * escala),
                                 Text(
                                   "Tu diccionario está vacío.",
                                   style: TextStyle(
@@ -169,7 +175,7 @@ class PantallaDiccionarioVista extends StatelessWidget {
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                                const SizedBox(height: 6),
+                                SizedBox(height: 6 * escala),
                                 Text(
                                   "¡Guarda palabras durante el juego!",
                                   style: TextStyle(
@@ -216,7 +222,7 @@ class PantallaDiccionarioVista extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 12),
+                          SizedBox(height: 12 * escala),
                           Expanded(
                             child: ListView.builder(
                               padding: const EdgeInsets.symmetric(
@@ -248,6 +254,11 @@ class _TarjetaPalabra extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Obtener la altura disponible
+  final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     final termino = item['termino'] ?? '';
     final significado = item['significado'] ?? '';
 
@@ -290,7 +301,7 @@ class _TarjetaPalabra extends StatelessWidget {
                       height: 1.2,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4 * escala),
                   Text(
                     significado,
                     style: TextStyle(
@@ -302,7 +313,7 @@ class _TarjetaPalabra extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 8),
+             SizedBox(width: 8 * escala),
             Icon(
               Icons.chevron_right_rounded,
               color: const Color(0xFFC9A96E).withOpacity(0.4),

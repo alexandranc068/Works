@@ -7,6 +7,10 @@ class PantallaRepasoVista extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Scaffold(
       backgroundColor: const Color(0xFF0D0D0D),
       body: Stack(
@@ -97,7 +101,7 @@ class PantallaRepasoVista extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 8),
+               SizedBox(height: 8 * escala),
 
                 // ── Línea roja ────────────────────────────────────────────
                 Padding(
@@ -117,7 +121,7 @@ class PantallaRepasoVista extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 16),
+               SizedBox(height: 16 * escala),
 
                 // ── Lista ─────────────────────────────────────────────────
                 Expanded(
@@ -160,7 +164,7 @@ class PantallaRepasoVista extends StatelessWidget {
                                     fontWeight: FontWeight.w900,
                                   ),
                                 ),
-                                const SizedBox(height: 12),
+                               SizedBox(height: 12 * escala),
                                 Text(
                                   "Aún no tienes consejos.",
                                   style: TextStyle(
@@ -169,7 +173,7 @@ class PantallaRepasoVista extends StatelessWidget {
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                                const SizedBox(height: 6),
+                               SizedBox(height: 6 * escala),
                                 Text(
                                   "¡Juega para aprender!",
                                   style: TextStyle(
@@ -210,7 +214,7 @@ class PantallaRepasoVista extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 12),
+                         SizedBox(height: 12 * escala),
                           Expanded(
                             child: ListView.builder(
                               padding: const EdgeInsets.symmetric(
@@ -289,6 +293,10 @@ class _TarjetaRepasoState extends State<_TarjetaRepaso> {
 
   @override
   Widget build(BuildContext context) {
+    final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     final nota = widget.nota;
     final esCorrecta = nota['es_correcta'] ?? false;
     final colorEstado =
@@ -325,7 +333,7 @@ class _TarjetaRepasoState extends State<_TarjetaRepaso> {
                     color: colorEstado,
                     size: 20,
                   ),
-                  const SizedBox(width: 10),
+                   SizedBox(width: 10 * escala),
                   Expanded(
                     child: Text(
                       nota['situacion'] ?? "Cuestión cultural",
@@ -341,7 +349,7 @@ class _TarjetaRepasoState extends State<_TarjetaRepaso> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                     SizedBox(width: 8 * escala),
                   Icon(
                     _expandida
                         ? Icons.keyboard_arrow_up_rounded
@@ -368,12 +376,12 @@ class _TarjetaRepasoState extends State<_TarjetaRepaso> {
 
               // ── Detalle expandible ───────────────────────────────────
               if (_expandida) ...[
-                const SizedBox(height: 14),
+               SizedBox(height: 14 * escala),
                 Container(
                   height: 1,
                   color: Colors.white.withOpacity(0.07),
                 ),
-                const SizedBox(height: 12),
+               SizedBox(height: 12 * escala),
 
                 // Tu respuesta
                 _FilaDetalle(
@@ -382,7 +390,7 @@ class _TarjetaRepasoState extends State<_TarjetaRepaso> {
                   color: Colors.white.withOpacity(0.7),
                 ),
 
-                const SizedBox(height: 10),
+               SizedBox(height: 10 * escala),
 
                 // Lección de Sato-san
                 Container(
@@ -411,7 +419,7 @@ class _TarjetaRepasoState extends State<_TarjetaRepaso> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 6),
+                     SizedBox(height: 6 * escala),
                       Text(
                         nota['explicacion_cultural'] ?? "Sin explicación.",
                         style: const TextStyle(
@@ -446,6 +454,10 @@ class _FilaDetalle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final alturaPantalla = MediaQuery.of(context).size.height;
+  
+  // 2. Factor de escala: 1.0 = pantalla base de ~720px
+  final escala = (alturaPantalla / 720).clamp(0.65, 1.2);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -458,7 +470,7 @@ class _FilaDetalle extends StatelessWidget {
             letterSpacing: 1.5,
           ),
         ),
-        const SizedBox(height: 4),
+       SizedBox(height: 4   * escala),
         Text(
           valor,
           style: TextStyle(
