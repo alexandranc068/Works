@@ -54,28 +54,54 @@ class SelectorDificultadVista extends StatelessWidget {
   ),
 ),
           Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "ELIGE TU NIVEL DE INMERSIÓN",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    letterSpacing: 3,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-               SizedBox(height: 40 * escala),
-                _botonDificultad(context, "FÁCIL", "2 opciones de respuesta", Colors.greenAccent, () => _irAlSiguientePaso(context, "facil")),
-                _botonDificultad(context, "MEDIO", "4 opciones de respuesta", Colors.orangeAccent, () => _irAlSiguientePaso(context, "medio")),
-                _botonDificultad(context, "MODO PRO", "Escribe tu respuesta (IA)", Colors.redAccent, () => _irAlSiguientePaso(context, "pro"), esPro: true),
-              ],
-            ),
-          ),
-        ],
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Container(
+        width: 40,
+        height: 1,
+        color: Colors.white38,
       ),
-    );
+      SizedBox(height: 12 * escala),
+      const Text(
+        "難易度を選択",
+        style: TextStyle(
+          color: Colors.white38,
+          fontSize: 13,
+          letterSpacing: 6,
+          fontWeight: FontWeight.w300,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      SizedBox(height: 8 * escala),
+      const Text(
+        "ELIGE TU NIVEL\nDE INMERSIÓN",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 26,
+          letterSpacing: 4,
+          fontWeight: FontWeight.w200,
+          height: 1.4,
+        ),
+      ),
+      SizedBox(height: 8 * escala),
+      Container(
+        width: 40,
+        height: 1,
+        color: Colors.white38,
+      ),
+      SizedBox(height: 40 * escala),
+      _botonDificultad(context, "FÁCIL", "2 opciones de respuesta", Colors.greenAccent, () => _irAlSiguientePaso(context, "facil")),
+      _botonDificultad(context, "MEDIO", "4 opciones de respuesta", Colors.orangeAccent, () => _irAlSiguientePaso(context, "medio")),
+      _botonDificultad(context, "MODO PRO", "Escribe tu respuesta (IA)", Colors.redAccent, () => _irAlSiguientePaso(context, "pro"), esPro: true),
+   ],       // ← cierra children del Column
+            ),         // ← cierra Column
+          ),           // ← cierra Center
+        ],             // ← cierra children del Stack
+      ),               // ← cierra Stack
+    );                 // ← cierra Scaffold
   }
 
   Widget _botonDificultad(BuildContext context, String titulo, String subtitulo, Color color, VoidCallback accion, {bool esPro = false}) {
