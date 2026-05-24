@@ -98,7 +98,7 @@ print("🔍 Error si hay: ${query.docs}");
         puntosCultura: (datos['puntosCultura'] as num?)?.toInt() ?? 0,
         impactoCultural: (datos['impactoCultural'] as num?)?.toDouble() ?? 0.5,
         // Si no tiene foto en la BD, le ponemos la de turista por defecto
-        fotoPerfil: datos['fotosPerfil'] ?? datos['fotoPerfil'] ?? 'assets/imagenes/foto_defecto_foto_perfil.png', 
+        fotoPerfil: datos['fotoPerfil'] ?? 'assets/imagenes/foto_defecto_foto_perfil.png',
         progresoContextos: progresoCargado,
         historialAnimos: datos['historialAnimos'] != null 
             ? List<String>.from(datos['historialAnimos']) 
@@ -967,7 +967,8 @@ Formato JSON exacto:
       await FirebaseFirestore.instance
           .collection('usuarios')
           .doc(_userDocId)
-          .update({'fotosPerfil': nuevaRuta});
+          // ✅ corrección
+.update({'fotoPerfil': nuevaRuta});
       
       jugadorActual!.fotoPerfil = nuevaRuta;
       print("✅ Foto de perfil actualizada en la nube: $nuevaRuta");
